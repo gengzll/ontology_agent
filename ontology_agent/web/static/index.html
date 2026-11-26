@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontline Client Intelligence Graph · Ontology Agent Demo</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --panel: #ffffff; --ink: #1d2433; --muted: #667085; --line: #e4e7ec;
+    --accent: #0b6bcb; --accent-soft: #e8f1fb; --good: #12805c; --warn: #b54708; --bad: #b42318;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
+         "Microsoft YaHei", sans-serif; color: var(--ink); background: var(--bg); }
+  header { display: flex; align-items: center; gap: 16px; padding: 10px 20px; background: #101828; color: #fff; }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  header .sub { color: #98a2b3; font-size: 12px; }
+  header .spacer { flex: 1; }
+  header select, header .badge { font-size: 12px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #344054; color: #fff; }
+  .badge.ok { background: var(--good); } .badge.off { background: #475467; }
+  nav { display: flex; gap: 2px; padding: 0 20px; background: #fff; border-bottom: 1px solid var(--line); }
+  nav button { border: 0; background: none; padding: 10px 14px; cursor: pointer; color: var(--muted);
+               border-bottom: 2px solid transparent; font-size: 14px; }
+  nav button.active { color: var(--accent); border-color: var(--accent); font-weight: 600; }
+  main { padding: 16px 20px; }
+  .tab { display: none; } .tab.active { display: block; }
+  .grid { display: grid; grid-template-columns: 300px minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; }
+  .card h3 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .examples button { display: block; width: 100%; text-align: left; margin: 0 0 6px; padding: 7px 9px;
+                     border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; }
+  .examples button:hover { background: var(--accent-soft); border-color: #b2d1f0; }
+  .examples small { display: block; color: var(--muted); font-size: 11px; }
+  .ask { display: flex; gap: 8px; margin-bottom: 12px; }
+  .ask input { flex: 1; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 14px; }
+  .ask button, .btn { padding: 9px 16px; border: 0; border-radius: 8px; background: var(--accent); color: #fff;
+                      cursor: pointer; font-weight: 600; }
+  .ask select { border: 1px solid var(--line); border-radius: 8px; padding: 0 6px; }
+  .routing { display: grid; grid-template-columns: 1fr auto; gap: 0; font-size: 12px; border: 1px solid var(--line);
+             border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+  .routing div { padding: 4px 8px; border-bottom: 1px solid var(--line); }
+  .routing .hit { background: #fff4d6; font-weight: 600; }
+  .routing .h { background: #f2f4f7; font-weight: 600; color: var(--muted); }
+  .answer { min-height: 120px; }
+  .answer table { border-collapse: collapse; margin: 6px 0; font-size: 12.5px; }
+  .answer th, .answer td { border: 1px solid var(--line); padding: 3px 7px; text-align: left; }
+  .answer code { font-family: var(--mono); font-size: 12px; background: #f2f4f7; padding: 1px 4px; border-radius: 4px; }
+  .answer h3 { margin: 4px 0 8px; font-size: 16px; }
+  .answer ul, .answer ol { padding-left: 20px; margin: 4px 0; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; font-size: 12px; }
+  .pill { padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .pill.tech { background: #fff4d6; color: #93370d; font-weight: 600; }
+  details.trace { margin-top: 12px; font-size: 12px; }
+  details.trace pre { white-space: pre-wrap; word-break: break-all; background: #f8f9fb; border: 1px solid var(--line);
+                      padding: 6px; border-radius: 6px; font-family: var(--mono); font-size: 11px; max-height: 160px; overflow: auto; }
+  .fb { margin-top: 10px; display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+  .fb button { border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; padding: 3px 8px; }
+  #graph, #egraph { width: 100%; height: 560px; border: 1px solid var(--line); border-radius: 8px; background: #fcfcfd; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; font-size: 11px; color: var(--muted); margin-top: 6px; }
+  .legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+                         background: var(--c); margin-right: 4px; vertical-align: middle; }
+  .nodeinfo { font-size: 12px; margin-top: 8px; max-height: 240px; overflow: auto; }
+  .nodeinfo b { color: var(--muted); font-weight: 600; }
+  .spinner { color: var(--muted); font-style: italic; }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .kv { font-size: 12.5px; } .kv td { padding: 2px 8px 2px 0; vertical-align: top; }
+  pre.ttl { max-height: 420px; overflow: auto; font-family: var(--mono); font-size: 11px; background: #0f1728; color: #d0d5dd;
+            padding: 10px; border-radius: 8px; }
+  .note { background: #fffaeb; border: 1px solid #fedf89; color: #7a2e0e; padding: 8px 12px; border-radius: 8px;
+          font-size: 12.5px; margin-bottom: 12px; }
+  @media (max-width: 1200px) { .grid { grid-template-columns: 1fr; } .cols2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Frontline Client Intelligence Graph</h1>
+    <div class="sub">Shared CIB client ontology + knowledge graph + agent · synthetic data · as of <span id="asof"></span></div>
+  </div>
+  <div class="spacer"></div>
+  <label class="sub">Banker persona <select id="banker"></select></label>
+  <span id="mode" class="badge off">…</span>
+</header>
+<nav>
+  <button data-tab="ask" class="active">Ask the agent</button>
+  <button data-tab="explore">Explore graph</button>
+  <button data-tab="ontology">Ontology</button>
+  <button data-tab="experiments">Lighthouse experiments</button>
+</nav>
+<main>
+  <section id="tab-ask" class="tab active">
+    <div class="grid">
+      <div class="card">
+        <h3>Question types (from the brief)</h3>
+        <div class="examples" id="examples"></div>
+      </div>
+      <div class="card">
+        <div class="ask">
+          <input id="q" placeholder="Ask about a client, a relationship, an event or your portfolio… (English / 中文)">
+          <select id="modesel" title="Agent mode">
+            <option value="auto">auto</option><option value="offline">offline planner</option><option value="claude">Claude</option>
+          </select>
+          <button id="go">Ask</button>
+        </div>
+        <div id="routing" class="routing"></div>
+        <div class="meta" id="meta"></div>
+        <div class="answer" id="answer"><span class="spinner">Pick an example or type a question.</span></div>
+        <details class="trace" id="trace"></details>
+        <div class="fb" id="fb" style="display:none">Was this useful to a banker?
+          <button data-v="accept">👍 accept</button><button data-v="reject">👎 reject</button><span id="fbmsg"></span></div>
+      </div>
+      <div class="card">
+        <h3>Evidence subgraph</h3>
+        <svg id="graph"></svg>
+        <div class="legend" id="legend"></div>
+        <div class="nodeinfo" id="nodeinfo">Click a node to inspect it; double-click to expand.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-explore" class="tab">
+    <div class="card">
+      <div class="ask">
+        <select id="eclient"></select>
+        <select id="edepth"><option value="1">depth 1</option><option value="2">depth 2</option></select>
+        <button class="btn" id="ego">Show neighbourhood</button>
+      </div>
+      <svg id="egraph"></svg>
+      <div class="legend" id="elegend"></div>
+      <div class="nodeinfo" id="enodeinfo"></div>
+    </div>
+  </section>
+
+  <section id="tab-ontology" class="tab">
+    <div class="cols2">
+      <div class="card"><h3>Classes</h3><div id="classes"></div><h3 style="margin-top:14px">Event playbook</h3><div id="playbook"></div></div>
+      <div class="card"><h3>Relations</h3><div id="relations"></div><h3 style="margin-top:14px">OWL / Turtle export</h3><pre class="ttl" id="ttl"></pre></div>
+    </div>
+  </section>
+
+  <section id="tab-experiments" class="tab">
+    <div class="note">Synthetic data: the hidden ground truth was generated with the same kinds of signals the graph uses,
+      so these numbers validate the pipeline and the evaluation protocol, not the business hypothesis. Re-run on real
+      data for the pilot.</div>
+    <div class="card answer" id="exp"><span class="spinner">Loading…</span></div>
+  </section>
+</main>
+
+<script>
+const COLORS = {ClientGroup:"#0b6bcb", LegalEntity:"#53b1fd", ExternalCompany:"#f79009", Contact:"#12b76a",
+  Banker:"#7a5af8", Product:"#ee46bc", Deal:"#b42318", CorporateEvent:"#dc6803", CallReport:"#667085",
+  CreditPaper:"#344054", Opportunity:"#c11574", WalletEstimate:"#98a2b3", Interaction:"#d0d5dd",
+  Country:"#a6c2e0", Currency:"#a6c2e0", Industry:"#a6c2e0", Intent:"#fdb022"};
+let META = null, LAST = null;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function md(src) {
+  const lines = esc(src).split("\n"); let out = [], list = null, table = [];
+  const inline = t => t.replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>")
+                       .replace(/(^|[\s(])_([^_]+)_(?=[\s).,:;]|$)/g, "$1<i>$2</i>");
+  const flushTable = () => { if (!table.length) return;
+    const rows = table.filter(r => !/^\|\s*-/.test(r)).map(r => r.replace(/^\||\|$/g, "").split("|"));
+    out.push("<table>" + rows.map((r, i) => "<tr>" + r.map(c => i ? `<td>${inline(c.trim())}</td>` :
+      `<th>${inline(c.trim())}</th>`).join("") + "</tr>").join("") + "</table>"); table = []; };
+  const flushList = () => { if (list) { out.push(`</${list}>`); list = null; } };
+  for (let raw of lines) {
+    const l = raw.replace(/\s+$/, ""), br = / {2}$/.test(raw) ? "<br>" : "";
+    if (l.startsWith("|")) { flushList(); table.push(l); continue; } else flushTable();
+    let m;
+    if ((m = l.match(/^#{1,4}\s+(.*)/))) { flushList(); out.push(`<h3>${inline(m[1])}</h3>`); }
+    else if ((m = l.match(/^\s*[-*]\s+(.*)/))) { if (list !== "ul") { flushList(); out.push("<ul>"); list = "ul"; }
+      out.push(`<li style="margin-left:${(l.match(/^\s*/)[0].length)*6}px">${inline(m[1])}${br}`); }
+    else if ((m = l.match(/^\s*(\d+)\.\s+(.*)/))) { if (list !== "ol") { flushList(); out.push("<ol>"); list = "ol"; }
+      out.push(`<li value="${m[1]}">${inline(m[2])}${br}`); }
+    else if (!l.trim()) { flushList(); out.push("<div style='height:6px'></div>"); }
+    else if ((m = l.match(/^&gt;\s?(.*)/))) { flushList(); out.push(`<div class="note">${inline(m[1])}</div>`); }
+    else if (/^\s{2,}/.test(l) && list) { out.push(`<div style="margin-left:18px">${inline(l.trim())}${br}</div>`); }
+    else { flushList(); out.push(`<div>${inline(l)}${br}</div>`); }
+  }
+  flushTable(); flushList(); return out.join("");
+}
+
+// ---------------- force layout ----------------
+function drawGraph(svgSel, data, infoSel, onExpand) {
+  const svg = $(svgSel), W = svg.clientWidth || 600, H = svg.clientHeight || 560;
+  svg.innerHTML = ""; svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  const nodes = data.nodes.map((n, i) => ({...n, x: W/2 + Math.cos(i) * 150 * Math.random(), y: H/2 + Math.sin(i) * 150 * Math.random(), vx: 0, vy: 0}));
+  const idx = Object.fromEntries(nodes.map((n, i) => [n.id, i]));
+  const edges = data.edges.filter(e => e.source in idx && e.target in idx);
+  for (let it = 0; it < 320; it++) {
+    const alpha = 1 - it / 320;
+    for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+      const a = nodes[i], b = nodes[j]; let dx = a.x - b.x, dy = a.y - b.y, d2 = dx*dx + dy*dy + 0.01;
+      const f = 2200 / d2; dx *= f; dy *= f; a.vx += dx; a.vy += dy; b.vx -= dx; b.vy -= dy; }
+    for (const e of edges) { const a = nodes[idx[e.source]], b = nodes[idx[e.target]];
+      const dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx*dx + dy*dy) + 0.01, f = (d - 90) * 0.02;
+      a.vx += dx / d * f * d * 0.05; a.vy += dy / d * f * d * 0.05; b.vx -= dx / d * f * d * 0.05; b.vy -= dy / d * f * d * 0.05; }
+    for (const n of nodes) { n.vx += (W/2 - n.x) * 0.004; n.vy += (H/2 - n.y) * 0.004;
+      n.x += Math.max(-25, Math.min(25, n.vx)) * alpha; n.y += Math.max(-25, Math.min(25, n.vy)) * alpha;
+      n.vx *= 0.5; n.vy *= 0.5; n.x = Math.max(20, Math.min(W - 20, n.x)); n.y = Math.max(20, Math.min(H - 20, n.y)); }
+  }
+  const NS = "http://www.w3.org/2000/svg", el = (t, a) => { const e = document.createElementNS(NS, t);
+    for (const k in a) e.setAttribute(k, a[k]); return e; };
+  const gE = el("g", {}), gN = el("g", {}); svg.append(gE, gN);
+  const lines = edges.map(e => { const a = nodes[idx[e.source]], b = nodes[idx[e.target]];
+    const ln = el("line", {x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: "#c7ccd4", "stroke-width": 1.2});
+    const t = el("title", {}); t.textContent = e.rel; ln.append(t); gE.append(ln);
+    const lab = el("text", {x: (a.x + b.x)/2, y: (a.y + b.y)/2, "font-size": 8, fill: "#98a2b3", "text-anchor": "middle"});
+    lab.textContent = edges.length < 60 ? e.rel : ""; gE.append(lab); return {ln, lab, e}; });
+  nodes.forEach(n => {
+    const g = el("g", {transform: `translate(${n.x},${n.y})`, cursor: "pointer"});
+    const r = n.type === "ClientGroup" ? 11 : n.focus ? 8 : 6;
+    g.append(el("circle", {r, fill: COLORS[n.type] || "#999", stroke: n.focus ? "#101828" : "#fff", "stroke-width": n.focus ? 2 : 1}));
+    const t = el("text", {x: r + 3, y: 3, "font-size": n.focus || n.type === "ClientGroup" ? 10.5 : 9, fill: "#344054"});
+    t.textContent = (n.label || n.id).slice(0, 34); g.append(t);
+    const tt = el("title", {}); tt.textContent = `${n.type}: ${n.label} [${n.id}]`; g.append(tt);
+    g.addEventListener("click", () => showNode(n.id, infoSel));
+    g.addEventListener("dblclick", () => onExpand && onExpand(n.id));
+    let drag = false;
+    g.addEventListener("mousedown", () => drag = true);
+    window.addEventListener("mouseup", () => drag = false);
+    svg.addEventListener("mousemove", ev => { if (!drag) return; const p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY;
+      const q = p.matrixTransform(svg.getScreenCTM().inverse()); n.x = q.x; n.y = q.y; g.setAttribute("transform", `translate(${n.x},${n.y})`);
+      lines.forEach(L => { if (L.e.source === n.id || L.e.target === n.id) { const a = nodes[idx[L.e.source]], b = nodes[idx[L.e.target]];
+        L.ln.setAttribute("x1", a.x); L.ln.setAttribute("y1", a.y); L.ln.setAttribute("x2", b.x); L.ln.setAttribute("y2", b.y);
+        L.lab.setAttribute("x", (a.x + b.x)/2); L.lab.setAttribute("y", (a.y + b.y)/2); } }); });
+    gN.append(g);
+  });
+}
+function legend(sel, data) {
+  const types = [...new Set(data.nodes.map(n => n.type))];
+  $(sel).innerHTML = types.map(t => `<span style="--c:${COLORS[t] || '#999'}">${t}</span>`).join("");
+}
+async function showNode(id, sel) {
+  const d = await (await fetch(`/api/node?id=${encodeURIComponent(id)}`)).json();
+  const props = Object.entries(d.props || {}).filter(([k]) => !["financials","months","raw_names"].includes(k))
+    .map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td>${esc(typeof v === "object" ? JSON.stringify(v) : v).slice(0, 400)}</td></tr>`).join("");
+  const rels = Object.entries(d.relations || {}).map(([k, v]) => `<div><b>${esc(k)}</b>: ${v.slice(0, 8).map(x => esc(x.name)).join(", ")}${v.length > 8 ? " …" : ""}</div>`).join("");
+  $(sel).innerHTML = `<div><b>${esc(d.type)}</b> ${esc(id)}</div><table class="kv">${props}</table>${rels}`;
+}
+
+// ---------------- ask ----------------
+function renderRouting(active) {
+  const rows = Object.entries(META.routes);
+  $("#routing").innerHTML = `<div class="h">Question type</div><div class="h">Best technology</div>` +
+    rows.map(([k, v]) => `<div class="${k === active ? "hit" : ""}">“${esc(v.example)}”</div><div class="${k === active ? "hit" : ""}">${esc(v.technology)}</div>`).join("");
+}
+async function ask(q) {
+  $("#q").value = q; $("#answer").innerHTML = `<span class="spinner">Routing, calling tools, traversing the graph…</span>`;
+  $("#trace").innerHTML = ""; $("#meta").innerHTML = ""; $("#fb").style.display = "none"; $("#fbmsg").textContent = "";
+  const r = await fetch("/api/ask", {method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({question: q, mode: $("#modesel").value, banker: $("#banker").value})});
+  const d = await r.json(); LAST = d;
+  if (d.error) { $("#answer").textContent = d.error; return; }
+  renderRouting(d.route);
+  $("#meta").innerHTML = `<span class="pill tech">${esc(d.technology)}</span><span class="pill">route: ${esc(d.route)}</span>` +
+    `<span class="pill">${esc(d.mode)}</span><span class="pill">${d.elapsed_ms} ms</span>` +
+    (d.linked_entities || []).map(e => `<span class="pill" style="background:#f2f4f7;color:#344054">${esc(e.type)}: ${esc(e.name)}</span>`).join("");
+  $("#answer").innerHTML = md(d.answer);
+  $("#trace").innerHTML = `<summary>Agent trace: ${d.steps.length} tool call(s)</summary>` + d.steps.map((s, i) =>
+    `<div><b>${i + 1}. ${esc(s.tool)}</b>(${esc(JSON.stringify(s.args))}) · ${s.ms} ms ${s.error ? "<span style='color:var(--bad)'>error</span>" : ""}<pre>${esc(s.result_preview)}</pre></div>`).join("");
+  $("#fb").style.display = "flex";
+  if (d.subgraph && d.subgraph.nodes.length) { drawGraph("#graph", d.subgraph, "#nodeinfo", expand); legend("#legend", d.subgraph); }
+}
+async function expand(id) {
+  const d = await (await fetch(`/api/graph?center=${encodeURIComponent(id)}&depth=1&limit=60`)).json();
+  drawGraph("#graph", d, "#nodeinfo", expand); legend("#legend", d); showNode(id, "#nodeinfo");
+}
+async function explore() {
+  const d = await (await fetch(`/api/graph?center=${$("#eclient").value}&depth=${$("#edepth").value}&limit=110`)).json();
+  const ex = async id => { const x = await (await fetch(`/api/graph?center=${id}&depth=1&limit=80`)).json();
+    drawGraph("#egraph", x, "#enodeinfo", ex); legend("#elegend", x); showNode(id, "#enodeinfo"); };
+  drawGraph("#egraph", d, "#enodeinfo", ex); legend("#elegend", d);
+}
+
+// ---------------- ontology & experiments ----------------
+async function loadOntology() {
+  const o = await (await fetch("/api/ontology")).json();
+  $("#classes").innerHTML = "<table class='kv'>" + Object.entries(o.classes).map(([k, v]) =>
+    `<tr><td><span style="color:${COLORS[k] || '#344054'}">●</span> <b>${k}</b>${v.parent ? ` ⊂ ${v.parent}` : ""}</td><td>${esc(v.desc)}</td></tr>`).join("") + "</table>";
+  $("#relations").innerHTML = "<table class='kv'>" + Object.entries(o.relations).map(([k, v]) =>
+    `<tr><td><b>${k}</b>${v.inferred ? " <i>(inferred)</i>" : ""}</td><td>${v.domain.join("/")} → ${v.range.join("/")}</td><td>${esc(v.desc)}</td></tr>`).join("") + "</table>";
+  $("#playbook").innerHTML = "<table class='kv'>" + Object.entries(o.event_playbook).map(([k, v]) =>
+    `<tr><td><b>${k}</b></td><td>${v.map(r => `${r.product || "action"} <i>if ${r.condition}</i>`).join("; ")}</td></tr>`).join("") + "</table>";
+  $("#ttl").textContent = o.turtle;
+}
+async function loadExperiments() {
+  const e = await (await fetch("/api/experiments")).json();
+  $("#exp").innerHTML = md(e.markdown);
+}
+
+async function init() {
+  META = await (await fetch("/api/meta")).json();
+  $("#asof").textContent = META.as_of;
+  $("#mode").textContent = META.llm_available ? `Claude · ${META.model}` : "Offline planner (no API key)";
+  $("#mode").className = "badge " + (META.llm_available ? "ok" : "off");
+  $("#banker").innerHTML = META.bankers.map(b => `<option value="${b.id}">${esc(b.name)} – ${esc(b.role)}</option>`).join("");
+  $("#eclient").innerHTML = META.clients.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  $("#examples").innerHTML = META.examples.map(([r, q]) =>
+    `<button data-q="${esc(q)}">${esc(q)}<small>${esc(META.routes[r].technology)}</small></button>`).join("");
+  document.querySelectorAll("#examples button").forEach(b => b.onclick = () => ask(b.dataset.q));
+  renderRouting(null);
+  $("#go").onclick = () => $("#q").value.trim() && ask($("#q").value.trim());
+  $("#q").addEventListener("keydown", e => e.key === "Enter" && $("#go").click());
+  document.querySelectorAll("#fb button").forEach(b => b.onclick = async () => {
+    await fetch("/api/feedback", {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({question: LAST.question, route: LAST.route, verdict: b.dataset.v})});
+    $("#fbmsg").textContent = "recorded – counts toward banker acceptance in Experiment 2/3 reports"; });
+  document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+    document.querySelectorAll("nav button").forEach(x => x.classList.toggle("active", x === b));
+    document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.id === "tab-" + b.dataset.tab));
+    if (b.dataset.tab === "ontology" && !$("#ttl").textContent) loadOntology();
+    if (b.dataset.tab === "experiments") loadExperiments();
+    if (b.dataset.tab === "explore") explore(); });
+  $("#ego").onclick = explore;
+  ask(META.examples[4][1]);
+}
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+group_id,name,industry,hq_country,functional_ccy,segment,risk_rating
+G001,Aurora Logistics Group,Logistics,SG,SGD,Multinational,BB-
+G002,Banyan Foods Group,Food & Beverage,MY,MYR,Multinational,BBB
+G003,Cobalt Semicon Group,Electronics,SG,SGD,Multinational,A
+G004,Dragonfly Renewables Group,Utilities & Renewables,HK,USD,Multinational,A-
+G005,Evergreen Textiles Group,Textiles & Apparel,HK,USD,Multinational,BBB+
+G006,Falcon Petrochem Group,Petrochemicals,AE,USD,Multinational,BBB+
+G007,Granite Infrastructure Group,Construction & Infrastructure,IN,INR,Multinational,BBB
+G008,Harbourline Retail Group,Consumer Goods,HK,USD,Multinational,BBB+
+G009,Ironwood Pharma Group,Healthcare & Pharma,IN,INR,Multinational,A
+G010,Jadeport Maritime Group,Shipping,SG,SGD,Multinational,BB
+G011,Kestrel Auto Components Group,Automotive,CN,CNY,Multinational,BBB+
+G012,Lotusbay Hospitality Group,Hospitality,TH,THB,Multinational,A-
+G013,Meridale Telecom Group,Telecom & Media,ID,IDR,Multinational,BBB+
+G014,Nimbusline Cloud Group,Technology,SG,SGD,Multinational,BBB-
+G015,Orchidfield Agri Group,Agri-Commodities,SG,SGD,Multinational,BBB-
+G016,Pinewood Steelworks Group,Steel & Metals,IN,INR,Large Corporate,BB
+G017,Quartzline Electronics Group,Electronics,CN,CNY,Large Corporate,BBB
+G018,Redcliff Packaging Group,Paper & Packaging,MY,MYR,Large Corporate,BBB+
+G019,Saffronleaf Brands Group,Consumer Goods,IN,INR,Large Corporate,BB+
+G020,Tidewell Shipping Group,Shipping,HK,USD,Large Corporate,A-
+G021,Umberstone Mining Group,Mining,AU,AUD,Large Corporate,BBB
+G022,Vantagepoint Healthcare Group,Healthcare & Pharma,SG,SGD,Large Corporate,A-
+G023,Willowmere Education Group,Education,GB,GBP,Large Corporate,BBB-
+G024,Xenara Battery Tech Group,Automotive,CN,CNY,Large Corporate,A-
+G025,Yarrowfield Chemicals Group,Chemicals,DE,EUR,Large Corporate,A-
+G026,Zephyrine Airways Group,Airlines,HK,USD,Large Corporate,BBB+
+G027,Atlasrock Cement Group,Cement & Building Materials,VN,VND,Large Corporate,BBB-
+G028,Beaconhill Insurance Services Group,Financial Services,GB,GBP,Large Corporate,BB
+G029,Cedarvale Properties Group,Real Estate,SG,SGD,Large Corporate,BBB+
+G030,Deltawave Apparel Sourcing Group,Textiles & Apparel,HK,USD,Large Corporate,BBB-

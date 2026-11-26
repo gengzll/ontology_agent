@@ -1,0 +1,51 @@
+event_id,date,group_id,event_type,headline,country,counterparty_name,amount_usd
+EV001,2024-03-12,G001,ACQUISITION,"Aurora Logistics Group agrees to acquire Corvid Analytics (United Kingdom) for USD 1,200m",GB,Corvid Analytics,1200000000
+EV002,2025-11-18,G008,MARKET_EXPANSION,Harbourline Retail Group announces entry into Mexico with new distribution hub,MX,,200000000
+EV003,2024-10-17,G015,MARKET_EXPANSION,Orchidfield Agri Group announces entry into United Arab Emirates with new distribution hub,AE,,100000000
+EV004,2025-11-23,G022,BOND_MATURITY,Vantagepoint Healthcare Group's USD 500m notes fall due in 2026; refinancing under review,SG,,500000000
+EV005,2026-01-31,G029,BOND_MATURITY,Cedarvale Properties Group's USD 300m notes fall due in 2027; refinancing under review,SG,,300000000
+EV006,2024-06-20,G006,NEW_SUBSIDIARY,Falcon Petrochem Group incorporates new subsidiary in Vietnam,VN,,100000000
+EV007,2025-08-16,G013,ACQUISITION,Meridale Telecom Group agrees to acquire Orbiton Satellite (United States) for USD 600m,US,Orbiton Satellite,600000000
+EV008,2025-01-04,G020,BOND_MATURITY,Tidewell Shipping Group's USD 500m notes fall due in 2026; refinancing under review,HK,,500000000
+EV009,2024-01-19,G027,SUPPLY_CHAIN_SHIFT,Atlasrock Cement Group shifts sourcing of key inputs to suppliers in United States,US,,100000000
+EV010,2025-05-16,G004,NEW_SUBSIDIARY,Dragonfly Renewables Group incorporates new subsidiary in India,IN,,100000000
+EV011,2024-04-20,G011,BOND_MATURITY,Kestrel Auto Components Group's USD 750m notes fall due in 2025; refinancing under review,CN,,750000000
+EV012,2024-04-20,G018,SUPPLY_CHAIN_SHIFT,Redcliff Packaging Group shifts sourcing of key inputs to suppliers in United Arab Emirates,AE,,100000000
+EV013,2024-08-08,G025,ACQUISITION,Yarrowfield Chemicals Group agrees to acquire Tessellate Robotics (Germany) for USD 300m,DE,Tessellate Robotics,300000000
+EV014,2025-04-12,G002,ACQUISITION,"Banyan Foods Group agrees to acquire Orbiton Satellite (United States) for USD 1,200m",US,Orbiton Satellite,1200000000
+EV015,2025-05-18,G009,MARKET_EXPANSION,Ironwood Pharma Group announces entry into United Arab Emirates with new distribution hub,AE,,100000000
+EV016,2024-07-29,G016,IPO_PLAN,Pinewood Steelworks Group hires advisers for potential USD 400m listing of its regional unit,IN,,400000000
+EV017,2025-04-06,G023,MARKET_EXPANSION,Willowmere Education Group announces entry into United Arab Emirates with new distribution hub,AE,,100000000
+EV018,2025-08-11,G030,NEW_SUBSIDIARY,Deltawave Apparel Sourcing Group incorporates new subsidiary in India,IN,,100000000
+EV019,2024-12-21,G007,ACQUISITION,Granite Infrastructure Group agrees to acquire Coralbay Resorts (Indonesia) for USD 600m,ID,Coralbay Resorts,600000000
+EV020,2025-10-27,G014,MARKET_EXPANSION,Nimbusline Cloud Group announces entry into Thailand with new distribution hub,TH,,100000000
+EV021,2024-07-31,G021,MARKET_EXPANSION,Umberstone Mining Group announces entry into Thailand with new distribution hub,TH,,200000000
+EV022,2025-03-09,G028,CAPEX_PROJECT,Beaconhill Insurance Services Group approves USD 400m capacity expansion in Singapore,SG,,400000000
+EV023,2025-03-24,G005,CAPEX_PROJECT,Evergreen Textiles Group approves USD 400m capacity expansion in Japan,JP,,400000000
+EV024,2025-02-15,G012,DIVESTMENT,Lotusbay Hospitality Group explores sale of its Singapore business,SG,,100000000
+EV025,2024-01-26,G019,BOND_MATURITY,Saffronleaf Brands Group's USD 300m notes fall due in 2025; refinancing under review,IN,,300000000
+EV026,2024-02-13,G026,SUPPLY_CHAIN_SHIFT,Zephyrine Airways Group shifts sourcing of key inputs to suppliers in India,IN,,50000000
+EV027,2024-08-26,G003,DIVESTMENT,Cobalt Semicon Group explores sale of its Singapore business,SG,,250000000
+EV028,2025-12-11,G010,CAPEX_PROJECT,Jadeport Maritime Group approves USD 400m capacity expansion in Malaysia,MY,,400000000
+EV029,2024-12-26,G017,CAPEX_PROJECT,Quartzline Electronics Group approves USD 200m capacity expansion in China,CN,,200000000
+EV030,2024-11-22,G024,RATING_DOWNGRADE,Rating agency downgrades Xenara Battery Tech Group by one notch on weaker cash flow,CN,,0
+EV031,2025-11-20,G001,ACQUISITION,"Aurora Logistics Group agrees to acquire Pacific Rim Cold Chain (Vietnam) for USD 1,200m",VN,Pacific Rim Cold Chain,1200000000
+EV032,2025-03-25,G008,ACQUISITION,"Harbourline Retail Group agrees to acquire Coralbay Resorts (Indonesia) for USD 1,200m",ID,Coralbay Resorts,1200000000
+EV033,2025-06-06,G015,ACQUISITION,"Orchidfield Agri Group agrees to acquire Kinetica Motors (Mexico) for USD 1,200m",MX,Kinetica Motors,1200000000
+EV034,2025-08-24,G022,BOND_MATURITY,Vantagepoint Healthcare Group's USD 500m notes fall due in 2026; refinancing under review,SG,,500000000
+EV035,2025-10-28,G029,CAPEX_PROJECT,Cedarvale Properties Group approves USD 900m capacity expansion in Singapore,SG,,900000000
+EV036,2026-02-22,G006,ACQUISITION,Falcon Petrochem Group agrees to acquire Pacific Rim Cold Chain (Vietnam) for USD 600m,VN,Pacific Rim Cold Chain,600000000
+EV037,2025-07-07,G013,MGMT_CHANGE,Meridale Telecom Group appoints new Group CFO,ID,,0
+EV038,2026-02-11,G020,MARKET_EXPANSION,Tidewell Shipping Group announces entry into China with new distribution hub,CN,,50000000
+EV039,2025-12-20,G027,IPO_PLAN,Atlasrock Cement Group hires advisers for potential USD 800m listing of its regional unit,VN,,800000000
+EV040,2025-01-28,G004,MGMT_CHANGE,Dragonfly Renewables Group appoints new Group CFO,HK,,0
+EV041,2025-02-14,G011,SUPPLY_CHAIN_SHIFT,Kestrel Auto Components Group shifts sourcing of key inputs to suppliers in Malaysia,MY,,50000000
+EV042,2024-07-03,G018,SUPPLY_CHAIN_SHIFT,Redcliff Packaging Group shifts sourcing of key inputs to suppliers in United Kingdom,GB,,50000000
+EV043,2026-09-25,G001,ACQUISITION,Aurora Logistics Group agrees to acquire Coralbay Resorts (Indonesia) for USD 150m,ID,Coralbay Resorts,150000000
+EV044,2026-11-09,G003,MARKET_EXPANSION,Cobalt Semicon Group announces entry into United States with new distribution hub,US,,200000000
+EV045,2026-10-18,G006,RATING_DOWNGRADE,Rating agency downgrades Falcon Petrochem Group by one notch on weaker cash flow,AE,,0
+EV046,2026-11-11,G011,BOND_MATURITY,Kestrel Auto Components Group's USD 750m notes fall due in 2027; refinancing under review,CN,,750000000
+EV047,2026-11-06,G016,MGMT_CHANGE,Pinewood Steelworks Group appoints new Group CFO,IN,,0
+EV048,2026-09-30,G021,SUPPLY_CHAIN_SHIFT,Umberstone Mining Group shifts sourcing of key inputs to suppliers in Singapore,SG,,50000000
+EV049,2026-10-06,G008,NEW_SUBSIDIARY,Harbourline Retail Group incorporates new subsidiary in Germany,DE,,100000000
+EV050,2026-10-15,G026,CAPEX_PROJECT,Zephyrine Airways Group approves USD 400m capacity expansion in India,IN,,400000000

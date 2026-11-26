@@ -1,0 +1,86 @@
+banker_id,group_id,role
+BK01,G001,Lead RM
+BK07,G001,GB Product Partner
+BK09,G001,TB Product Partner
+BK11,G001,Markets Product Partner
+BK02,G002,Lead RM
+BK07,G002,GB Product Partner
+BK03,G003,Lead RM
+BK09,G003,TB Product Partner
+BK04,G004,Lead RM
+BK06,G004,GB Product Partner
+BK09,G004,TB Product Partner
+BK10,G004,Markets Product Partner
+BK05,G005,Lead RM
+BK06,G005,GB Product Partner
+BK08,G005,TB Product Partner
+BK01,G006,Lead RM
+BK06,G006,GB Product Partner
+BK08,G006,TB Product Partner
+BK02,G007,Lead RM
+BK06,G007,GB Product Partner
+BK03,G008,Lead RM
+BK10,G008,Markets Product Partner
+BK04,G009,Lead RM
+BK07,G009,GB Product Partner
+BK09,G009,TB Product Partner
+BK05,G010,Lead RM
+BK06,G010,GB Product Partner
+BK08,G010,TB Product Partner
+BK11,G010,Markets Product Partner
+BK01,G011,Lead RM
+BK02,G012,Lead RM
+BK07,G012,GB Product Partner
+BK03,G013,Lead RM
+BK12,G013,GB Product Partner
+BK08,G013,TB Product Partner
+BK11,G013,Markets Product Partner
+BK04,G014,Lead RM
+BK09,G014,TB Product Partner
+BK11,G014,Markets Product Partner
+BK05,G015,Lead RM
+BK09,G015,TB Product Partner
+BK10,G015,Markets Product Partner
+BK01,G016,Lead RM
+BK06,G016,GB Product Partner
+BK09,G016,TB Product Partner
+BK02,G017,Lead RM
+BK06,G017,GB Product Partner
+BK09,G017,TB Product Partner
+BK10,G017,Markets Product Partner
+BK03,G018,Lead RM
+BK06,G018,GB Product Partner
+BK08,G018,TB Product Partner
+BK04,G019,Lead RM
+BK06,G019,GB Product Partner
+BK09,G019,TB Product Partner
+BK10,G019,Markets Product Partner
+BK05,G020,Lead RM
+BK12,G020,GB Product Partner
+BK08,G020,TB Product Partner
+BK01,G021,Lead RM
+BK02,G022,Lead RM
+BK11,G022,Markets Product Partner
+BK03,G023,Lead RM
+BK06,G023,GB Product Partner
+BK08,G023,TB Product Partner
+BK04,G024,Lead RM
+BK06,G024,GB Product Partner
+BK10,G024,Markets Product Partner
+BK05,G025,Lead RM
+BK08,G025,TB Product Partner
+BK11,G025,Markets Product Partner
+BK01,G026,Lead RM
+BK12,G026,GB Product Partner
+BK09,G026,TB Product Partner
+BK10,G026,Markets Product Partner
+BK02,G027,Lead RM
+BK08,G027,TB Product Partner
+BK11,G027,Markets Product Partner
+BK03,G028,Lead RM
+BK09,G028,TB Product Partner
+BK10,G028,Markets Product Partner
+BK04,G029,Lead RM
+BK10,G029,Markets Product Partner
+BK05,G030,Lead RM
+BK11,G030,Markets Product Partner

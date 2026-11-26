@@ -1,0 +1,199 @@
+[
+  {
+    "group_id": "G001",
+    "group_name": "Aurora Logistics Group",
+    "company_b": "Harrowgate Steel Trading",
+    "connections": [
+      {
+        "type": "SUPPLIER",
+        "via": "Aurora Logistics Pty Ltd"
+      },
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Isabel Nakamura"
+      },
+      {
+        "type": "JV",
+        "via": "Aurora-Harrowgate JV"
+      }
+    ]
+  },
+  {
+    "group_id": "G002",
+    "group_name": "Banyan Foods Group",
+    "company_b": "Orbiton Satellite",
+    "connections": [
+      {
+        "type": "JV",
+        "via": "Banyan-Orbiton JV"
+      },
+      {
+        "type": "SHARED_DIRECTOR",
+        "via": "Omar Iyer"
+      }
+    ]
+  },
+  {
+    "group_id": "G003",
+    "group_name": "Cobalt Semicon Group",
+    "company_b": "Riverside Polymers",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Leila Santos"
+      }
+    ]
+  },
+  {
+    "group_id": "G004",
+    "group_name": "Dragonfly Renewables Group",
+    "company_b": "Orbiton Satellite",
+    "connections": [
+      {
+        "type": "SUPPLIER",
+        "via": "Dragonfly Renewables Holdings Limited"
+      }
+    ]
+  },
+  {
+    "group_id": "G005",
+    "group_name": "Evergreen Textiles Group",
+    "company_b": "Orbiton Satellite",
+    "connections": [
+      {
+        "type": "JV",
+        "via": "Evergreen-Orbiton JV"
+      },
+      {
+        "type": "SHARED_DIRECTOR",
+        "via": "Rahul Nakamura"
+      }
+    ]
+  },
+  {
+    "group_id": "G006",
+    "group_name": "Falcon Petrochem Group",
+    "company_b": "Verdant Packaging Co",
+    "connections": [
+      {
+        "type": "SHARED_DIRECTOR",
+        "via": "Maya Reddy"
+      }
+    ]
+  },
+  {
+    "group_id": "G007",
+    "group_name": "Granite Infrastructure Group",
+    "company_b": "Quantafin Software",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Daniel Sato"
+      },
+      {
+        "type": "SUPPLIER",
+        "via": "Granite Infrastructure India Private Limited"
+      }
+    ]
+  },
+  {
+    "group_id": "G008",
+    "group_name": "Harbourline Retail Group",
+    "company_b": "Mistral Chemicals Asia",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Omar Martin"
+      }
+    ]
+  },
+  {
+    "group_id": "G009",
+    "group_name": "Ironwood Pharma Group",
+    "company_b": "Coralbay Resorts",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Arjun Reddy"
+      },
+      {
+        "type": "SUPPLIER",
+        "via": "Ironwood Pharma Asia Holdings (Singapore) Pte Ltd"
+      }
+    ]
+  },
+  {
+    "group_id": "G010",
+    "group_name": "Jadeport Maritime Group",
+    "company_b": "Kinetica Motors",
+    "connections": [
+      {
+        "type": "JV",
+        "via": "Jadeport-Kinetica JV"
+      }
+    ]
+  },
+  {
+    "group_id": "G011",
+    "group_name": "Kestrel Auto Components Group",
+    "company_b": "Bluefin Seafood Trading",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Nguyen Sato"
+      },
+      {
+        "type": "SUPPLIER",
+        "via": "Kestrel Auto Components KK"
+      }
+    ]
+  },
+  {
+    "group_id": "G012",
+    "group_name": "Lotusbay Hospitality Group",
+    "company_b": "Quantafin Software",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Rina Chen"
+      }
+    ]
+  },
+  {
+    "group_id": "G013",
+    "group_name": "Meridale Telecom Group",
+    "company_b": "Tessellate Robotics",
+    "connections": [
+      {
+        "type": "SHARED_DIRECTOR",
+        "via": "Leila Tran"
+      }
+    ]
+  },
+  {
+    "group_id": "G014",
+    "group_name": "Nimbusline Cloud Group",
+    "company_b": "Bluefin Seafood Trading",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Yuki Santos"
+      },
+      {
+        "type": "SUPPLIER",
+        "via": "Nimbusline Cloud Holdings Limited"
+      }
+    ]
+  },
+  {
+    "group_id": "G015",
+    "group_name": "Orchidfield Agri Group",
+    "company_b": "Ember Coal Trading",
+    "connections": [
+      {
+        "type": "FORMER_EMPLOYEE",
+        "via": "Daniel Tran"
+      }
+    ]
+  }
+]

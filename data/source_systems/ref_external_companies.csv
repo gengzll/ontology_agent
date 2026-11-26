@@ -1,0 +1,23 @@
+ext_id,name,country,industry,kind
+X001,Helixon Components,CN,Electronics,supplier
+X002,Monsoon Freight Lines,IN,Logistics,supplier
+X003,Polarion Mining Equipment,AU,Industrial Machinery,supplier
+X004,Sakuraden Precision,JP,Industrial Machinery,supplier
+X005,Verdant Packaging Co,VN,Paper & Packaging,supplier
+X006,Northstar Harbour Capital,SG,Private Equity,sponsor
+X007,Bluefin Seafood Trading,TH,Food & Beverage,supplier
+X008,Corvid Analytics,GB,Technology,target
+X009,Riverside Polymers,MY,Chemicals,supplier
+X010,Saltmarsh Agro,ID,Agri-Commodities,supplier
+X011,Tessellate Robotics,DE,Industrial Machinery,target
+X012,Orbiton Satellite,US,Telecom & Media,target
+X013,Granary Hill Mills,AU,Agri-Commodities,target
+X014,Kinetica Motors,MX,Automotive,target
+X015,Lumen Grid Solutions,VN,Utilities & Renewables,target
+X016,Pacific Rim Cold Chain,VN,Logistics,target
+X017,Silverline Textiles Mill,IN,Textiles & Apparel,supplier
+X018,Ember Coal Trading,ID,Mining,supplier
+X019,Coralbay Resorts,ID,Hospitality,target
+X020,Quantafin Software,IN,Technology,supplier
+X021,Harrowgate Steel Trading,AE,Steel & Metals,supplier
+X022,Mistral Chemicals Asia,SG,Chemicals,supplier

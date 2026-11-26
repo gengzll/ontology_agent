@@ -1,0 +1,13 @@
+banker_id,name,role,business
+BK01,Sarah Lim,Relationship Manager,Coverage
+BK02,James Okafor,Relationship Manager,Coverage
+BK03,Mei Chen,Relationship Manager,Coverage
+BK04,Rohan Mehta,Relationship Manager,Coverage
+BK05,Anna Schmidt,Senior Banker,Coverage
+BK06,David Ng,M&A Director,GB
+BK07,Laura Pereira,DCM / LevFin Director,GB
+BK08,Kevin Tan,Cash Management Specialist,TB
+BK09,Fatima Al-Sayed,Trade & SCF Specialist,TB
+BK10,Hiroshi Mori,FX & Rates Sales,Markets
+BK11,Emily Zhou,Commodities Sales,Markets
+BK12,Arun Pillai,Corporate Finance Analyst,GB

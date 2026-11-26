@@ -1,0 +1,863 @@
+{
+  "kg_quality": {
+    "graph": {
+      "nodes": 1866,
+      "edges": 5641,
+      "nodes_by_class": {
+        "Banker": 12,
+        "CallReport": 163,
+        "ClientGroup": 30,
+        "Contact": 189,
+        "CorporateEvent": 50,
+        "Country": 15,
+        "CreditPaper": 30,
+        "Currency": 15,
+        "Deal": 139,
+        "ExternalCompany": 88,
+        "Industry": 26,
+        "Intent": 11,
+        "Interaction": 736,
+        "LegalEntity": 139,
+        "Opportunity": 28,
+        "Product": 15,
+        "WalletEstimate": 180
+      },
+      "edges_by_relation": {
+        "ABOUT": 929,
+        "AFFECTS": 50,
+        "ATTENDEE": 240,
+        "AUTHORED_BY": 193,
+        "BELONGS_TO_GROUP": 139,
+        "BY_BANKER": 736,
+        "COVERS": 85,
+        "DEAL_COUNTERPARTY": 23,
+        "DEAL_TEAM": 278,
+        "DIRECTOR_OF": 4,
+        "EXECUTED_FOR": 139,
+        "EXPRESSES": 59,
+        "FOR_PRODUCT": 167,
+        "HAS_CURRENCY": 15,
+        "HAS_OPPORTUNITY": 28,
+        "HAS_WALLET": 180,
+        "HOLDS": 250,
+        "INCORPORATED_IN": 161,
+        "INVOLVES": 10,
+        "IN_COUNTRY": 50,
+        "IN_INDUSTRY": 52,
+        "JV_PARTNER_WITH": 4,
+        "MENTIONS": 159,
+        "ORIGINATED_FROM": 78,
+        "OWNED_BY": 28,
+        "PAYS": 302,
+        "PREVIOUSLY_WORKED_AT": 12,
+        "SUBSIDIARY_OF": 109,
+        "SUPPLIER_OF": 119,
+        "TRADES_WITH": 8,
+        "ULTIMATE_PARENT": 109,
+        "WITH_CONTACT": 736,
+        "WORKS_AT": 189
+      },
+      "ontology_violations": 0
+    },
+    "inferred_edges": {
+      "ULTIMATE_PARENT": 109,
+      "SUPPLIER_OF": 119,
+      "TRADES_WITH": 8
+    },
+    "extracted_intents": 59,
+    "payment_beneficiary_resolution": {
+      "aliases": 1404,
+      "correct": 1364,
+      "wrong": 0,
+      "unresolved": 40,
+      "precision": 1.0,
+      "recall": 0.972
+    }
+  },
+  "exp1": {
+    "cohort_size": 25,
+    "k": 3,
+    "realised_opportunities": 32,
+    "graph_nba": {
+      "precision": 0.394,
+      "recall": 0.812,
+      "f1": 0.531,
+      "tp": 26,
+      "fp": 40,
+      "fn": 6,
+      "precision_at_k": 0.347,
+      "f1_at_k": 0.486,
+      "client_hit_rate": 0.842,
+      "net_new_hits_not_in_pipeline": 18,
+      "recommended_declined_products": 0
+    },
+    "baseline_today": {
+      "precision": 0.24,
+      "recall": 0.562,
+      "f1": 0.336,
+      "tp": 18,
+      "fp": 57,
+      "fn": 14,
+      "precision_at_k": 0.24,
+      "f1_at_k": 0.336,
+      "client_hit_rate": 0.737,
+      "net_new_hits_not_in_pipeline": 10,
+      "recommended_declined_products": 1
+    },
+    "ablations": {
+      "payments_only": {
+        "precision": 0.75,
+        "recall": 0.469,
+        "f1": 0.577,
+        "tp": 15,
+        "fp": 5,
+        "fn": 17,
+        "precision_at_k": 0.2,
+        "f1_at_k": 0.28,
+        "client_hit_rate": 0.579,
+        "net_new_hits_not_in_pipeline": 11,
+        "recommended_declined_products": 0
+      },
+      "call_reports_only": {
+        "precision": 0.762,
+        "recall": 0.5,
+        "f1": 0.604,
+        "tp": 16,
+        "fp": 5,
+        "fn": 16,
+        "precision_at_k": 0.213,
+        "f1_at_k": 0.299,
+        "client_hit_rate": 0.632,
+        "net_new_hits_not_in_pipeline": 11,
+        "recommended_declined_products": 0
+      },
+      "holdings+wallet+pipeline_only": {
+        "precision": 0.279,
+        "recall": 0.531,
+        "f1": 0.366,
+        "tp": 17,
+        "fp": 44,
+        "fn": 15,
+        "precision_at_k": 0.227,
+        "f1_at_k": 0.318,
+        "client_hit_rate": 0.737,
+        "net_new_hits_not_in_pipeline": 9,
+        "recommended_declined_products": 1
+      }
+    },
+    "avg_sources_per_graph_recommendation": 1.64,
+    "examples": {
+      "G001": {
+        "graph": {
+          "recommended": [
+            "LIQUIDITY",
+            "IRS_HEDGE",
+            "TRADE_FIN"
+          ],
+          "realised": [
+            "LIQUIDITY",
+            "VIRTUAL_ACCT"
+          ],
+          "hits": [
+            "LIQUIDITY"
+          ]
+        },
+        "baseline": [
+          "LIQUIDITY",
+          "TRADE_FIN",
+          "IRS_HEDGE"
+        ]
+      },
+      "G002": {
+        "graph": {
+          "recommended": [
+            "COMMODITY_HEDGE",
+            "TRADE_FIN",
+            "VIRTUAL_ACCT"
+          ],
+          "realised": [
+            "COMMODITY_HEDGE"
+          ],
+          "hits": [
+            "COMMODITY_HEDGE"
+          ]
+        },
+        "baseline": [
+          "VIRTUAL_ACCT",
+          "TRADE_FIN",
+          "DCM"
+        ]
+      },
+      "G003": {
+        "graph": {
+          "recommended": [
+            "FX_HEDGE",
+            "SCF",
+            "DCM"
+          ],
+          "realised": [
+            "TRADE_FIN"
+          ],
+          "hits": []
+        },
+        "baseline": [
+          "DCM",
+          "FX_HEDGE",
+          "TERM_LOAN"
+        ]
+      },
+      "G004": {
+        "graph": {
+          "recommended": [
+            "IRS_HEDGE",
+            "FX_HEDGE"
+          ],
+          "realised": [],
+          "hits": []
+        },
+        "baseline": [
+          "FX_HEDGE",
+          "DCM",
+          "IRS_HEDGE"
+        ]
+      },
+      "G005": {
+        "graph": {
+          "recommended": [
+            "FX_HEDGE",
+            "MNA"
+          ],
+          "realised": [
+            "FX_HEDGE",
+            "MNA"
+          ],
+          "hits": [
+            "FX_HEDGE",
+            "MNA"
+          ]
+        },
+        "baseline": [
+          "MNA",
+          "FX_HEDGE",
+          "DCM"
+        ]
+      },
+      "G006": {
+        "graph": {
+          "recommended": [
+            "FX_HEDGE",
+            "SCF",
+            "TRADE_FIN"
+          ],
+          "realised": [
+            "CUSTODY",
+            "FX_HEDGE",
+            "SCF"
+          ],
+          "hits": [
+            "FX_HEDGE",
+            "SCF"
+          ]
+        },
+        "baseline": [
+          "TERM_LOAN",
+          "TRADE_FIN",
+          "FX_HEDGE"
+        ]
+      }
+    }
+  },
+  "exp2": {
+    "events_evaluated": 42,
+    "graph": {
+      "precision": 0.805,
+      "recall": 0.897,
+      "f1": 0.848,
+      "tp": 70,
+      "fp": 17,
+      "fn": 8
+    },
+    "baseline_news_alert": {
+      "precision": 0.587,
+      "recall": 0.91,
+      "f1": 0.714,
+      "tp": 71,
+      "fp": 50,
+      "fn": 7
+    },
+    "by_event_type": {
+      "ACQUISITION": {
+        "n": 9,
+        "graph": {
+          "precision": 0.846,
+          "recall": 0.957,
+          "f1": 0.898,
+          "tp": 22,
+          "fp": 4,
+          "fn": 1
+        },
+        "baseline": {
+          "precision": 0.611,
+          "recall": 0.957,
+          "f1": 0.746,
+          "tp": 22,
+          "fp": 14,
+          "fn": 1
+        }
+      },
+      "BOND_MATURITY": {
+        "n": 6,
+        "graph": {
+          "precision": 0.818,
+          "recall": 1.0,
+          "f1": 0.9,
+          "tp": 9,
+          "fp": 2,
+          "fn": 0
+        },
+        "baseline": {
+          "precision": 0.5,
+          "recall": 1.0,
+          "f1": 0.667,
+          "tp": 9,
+          "fp": 9,
+          "fn": 0
+        }
+      },
+      "CAPEX_PROJECT": {
+        "n": 5,
+        "graph": {
+          "precision": 1.0,
+          "recall": 0.727,
+          "f1": 0.842,
+          "tp": 8,
+          "fp": 0,
+          "fn": 3
+        },
+        "baseline": {
+          "precision": 0.6,
+          "recall": 0.818,
+          "f1": 0.692,
+          "tp": 9,
+          "fp": 6,
+          "fn": 2
+        }
+      },
+      "DIVESTMENT": {
+        "n": 2,
+        "graph": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        },
+        "baseline": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 4,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "IPO_PLAN": {
+        "n": 2,
+        "graph": {
+          "precision": 0.333,
+          "recall": 0.667,
+          "f1": 0.444,
+          "tp": 2,
+          "fp": 4,
+          "fn": 1
+        },
+        "baseline": {
+          "precision": 0.333,
+          "recall": 0.667,
+          "f1": 0.444,
+          "tp": 2,
+          "fp": 4,
+          "fn": 1
+        }
+      },
+      "MARKET_EXPANSION": {
+        "n": 7,
+        "graph": {
+          "precision": 0.733,
+          "recall": 1.0,
+          "f1": 0.846,
+          "tp": 11,
+          "fp": 4,
+          "fn": 0
+        },
+        "baseline": {
+          "precision": 0.524,
+          "recall": 1.0,
+          "f1": 0.688,
+          "tp": 11,
+          "fp": 10,
+          "fn": 0
+        }
+      },
+      "MGMT_CHANGE": {
+        "n": 2,
+        "graph": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        },
+        "baseline": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "NEW_SUBSIDIARY": {
+        "n": 3,
+        "graph": {
+          "precision": 0.833,
+          "recall": 0.833,
+          "f1": 0.833,
+          "tp": 5,
+          "fp": 1,
+          "fn": 1
+        },
+        "baseline": {
+          "precision": 0.833,
+          "recall": 0.833,
+          "f1": 0.833,
+          "tp": 5,
+          "fp": 1,
+          "fn": 1
+        }
+      },
+      "RATING_DOWNGRADE": {
+        "n": 1,
+        "graph": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        },
+        "baseline": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 0,
+          "fn": 1
+        }
+      },
+      "SUPPLY_CHAIN_SHIFT": {
+        "n": 5,
+        "graph": {
+          "precision": 0.818,
+          "recall": 0.9,
+          "f1": 0.857,
+          "tp": 9,
+          "fp": 2,
+          "fn": 1
+        },
+        "baseline": {
+          "precision": 0.6,
+          "recall": 0.9,
+          "f1": 0.72,
+          "tp": 9,
+          "fp": 6,
+          "fn": 1
+        }
+      }
+    },
+    "recommendations_with_context_evidence": "87/87",
+    "banker_acceptance": {
+      "status": "no feedback captured yet - use the thumbs up/down buttons in the web UI during the pilot"
+    },
+    "examples": [
+      {
+        "event": "Aurora Logistics Group agrees to acquire Corvid Analytics (United Kingdom) for USD 1,200m",
+        "event_id": "EV001",
+        "graph": [
+          "CASH_MGMT",
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "baseline": [
+          "ACQ_FIN",
+          "CASH_MGMT",
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "actual": [
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "rejected": [
+          "ACQ_FIN: leverage 5.0x vs 3.5x threshold (credit paper / financials)"
+        ]
+      },
+      {
+        "event": "Harbourline Retail Group announces entry into Mexico with new distribution hub",
+        "event_id": "EV002",
+        "graph": [
+          "FX_HEDGE",
+          "TRADE_FIN"
+        ],
+        "baseline": [
+          "CASH_MGMT",
+          "FX_HEDGE",
+          "TRADE_FIN"
+        ],
+        "actual": [
+          "FX_HEDGE",
+          "TRADE_FIN"
+        ],
+        "rejected": [
+          "CASH_MGMT: already bank Harbourline Retail de Mexico SA de CV in Mexico"
+        ]
+      },
+      {
+        "event": "Vantagepoint Healthcare Group's USD 500m notes fall due in 2026; refinancing under review",
+        "event_id": "EV004",
+        "graph": [
+          "DCM",
+          "IRS_HEDGE"
+        ],
+        "baseline": [
+          "DCM",
+          "IRS_HEDGE",
+          "TERM_LOAN"
+        ],
+        "actual": [
+          "DCM",
+          "IRS_HEDGE"
+        ],
+        "rejected": [
+          "TERM_LOAN: internal rating A-"
+        ]
+      },
+      {
+        "event": "Cedarvale Properties Group's USD 300m notes fall due in 2027; refinancing under review",
+        "event_id": "EV005",
+        "graph": [
+          "DCM"
+        ],
+        "baseline": [
+          "DCM",
+          "IRS_HEDGE",
+          "TERM_LOAN"
+        ],
+        "actual": [
+          "DCM"
+        ],
+        "rejected": [
+          "TERM_LOAN: internal rating BBB+",
+          "IRS_HEDGE: IRS hedge already held"
+        ]
+      },
+      {
+        "event": "Meridale Telecom Group agrees to acquire Orbiton Satellite (United States) for USD 600m",
+        "event_id": "EV007",
+        "graph": [
+          "ACQ_FIN",
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "baseline": [
+          "ACQ_FIN",
+          "CASH_MGMT",
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "actual": [
+          "ACQ_FIN",
+          "FX_HEDGE",
+          "MNA"
+        ],
+        "rejected": [
+          "CASH_MGMT: already bank Meridale Telecom Inc. in United States"
+        ]
+      },
+      {
+        "event": "Tidewell Shipping Group's USD 500m notes fall due in 2026; refinancing under review",
+        "event_id": "EV008",
+        "graph": [
+          "DCM",
+          "IRS_HEDGE"
+        ],
+        "baseline": [
+          "DCM",
+          "IRS_HEDGE",
+          "TERM_LOAN"
+        ],
+        "actual": [
+          "IRS_HEDGE"
+        ],
+        "rejected": [
+          "TERM_LOAN: internal rating A-"
+        ]
+      }
+    ]
+  },
+  "exp3": {
+    "client_groups": 15,
+    "questions": 75,
+    "graph_agent": {
+      "T1_entities_with_product": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 67,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": "15/15"
+      },
+      "T2_connection": {
+        "precision": 0.92,
+        "recall": 1.0,
+        "f1": 0.958,
+        "tp": 23,
+        "fp": 2,
+        "fn": 0,
+        "exact_match": "13/15"
+      },
+      "T3_contacts_not_met": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 44,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": "15/15"
+      },
+      "T4_strongest_banker_cfo": {
+        "precision": 1.0,
+        "recall": 0.882,
+        "f1": 0.938,
+        "tp": 15,
+        "fp": 0,
+        "fn": 2,
+        "exact_match": "14/15"
+      },
+      "T5_deals_for_jv_and_suppliers": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 57,
+        "fp": 0,
+        "fn": 0,
+        "exact_match": "15/15"
+      },
+      "ALL": {
+        "precision": 0.99,
+        "recall": 0.99,
+        "f1": 0.99,
+        "tp": 206,
+        "fp": 2,
+        "fn": 2,
+        "exact_match": "72/75"
+      }
+    },
+    "baseline_doc_rag": {
+      "T1_entities_with_product": {
+        "precision": 0.788,
+        "recall": 0.388,
+        "f1": 0.52,
+        "tp": 26,
+        "fp": 7,
+        "fn": 41,
+        "exact_match": "0/15"
+      },
+      "T2_connection": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 24,
+        "fn": 23,
+        "exact_match": "0/15"
+      },
+      "T3_contacts_not_met": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 44,
+        "exact_match": "0/15"
+      },
+      "T4_strongest_banker_cfo": {
+        "precision": 0.733,
+        "recall": 0.647,
+        "f1": 0.688,
+        "tp": 11,
+        "fp": 4,
+        "fn": 6,
+        "exact_match": "10/15"
+      },
+      "T5_deals_for_jv_and_suppliers": {
+        "precision": 0.083,
+        "recall": 0.053,
+        "f1": 0.065,
+        "tp": 3,
+        "fp": 33,
+        "fn": 54,
+        "exact_match": "1/15"
+      },
+      "ALL": {
+        "precision": 0.37,
+        "recall": 0.192,
+        "f1": 0.253,
+        "tp": 40,
+        "fp": 68,
+        "fn": 168,
+        "exact_match": "11/75"
+      }
+    },
+    "examples": [
+      {
+        "question": "How are Aurora Logistics and Harrowgate Steel Trading connected?",
+        "route": "CONNECTION",
+        "gold": [
+          [
+            "FORMER_EMPLOYEE",
+            "Isabel Nakamura"
+          ],
+          [
+            "JV",
+            "Aurora-Harrowgate JV"
+          ],
+          [
+            "SUPPLIER",
+            "Aurora Logistics Pty Ltd"
+          ]
+        ],
+        "graph": [
+          [
+            "JV",
+            "Aurora-Harrowgate JV"
+          ],
+          [
+            "SUPPLIER",
+            "Aurora Logistics Pty Ltd"
+          ],
+          [
+            "FORMER_EMPLOYEE",
+            "Isabel Nakamura"
+          ]
+        ],
+        "baseline": []
+      },
+      {
+        "question": "What deals have we executed for Aurora Logistics's JV partners and suppliers?",
+        "route": "SIMILAR_DEALS",
+        "gold": [],
+        "graph": [],
+        "baseline": []
+      },
+      {
+        "question": "How are Banyan Foods and Orbiton Satellite connected?",
+        "route": "CONNECTION",
+        "gold": [
+          [
+            "JV",
+            "Banyan-Orbiton JV"
+          ],
+          [
+            "SHARED_DIRECTOR",
+            "Omar Iyer"
+          ]
+        ],
+        "graph": [
+          [
+            "JV",
+            "Banyan-Orbiton JV"
+          ],
+          [
+            "SHARED_DIRECTOR",
+            "Omar Iyer"
+          ]
+        ],
+        "baseline": [
+          [
+            "DOC_MENTION",
+            "EV014"
+          ],
+          [
+            "DOC_MENTION",
+            "D0025"
+          ],
+          [
+            "DOC_MENTION",
+            "D0024"
+          ],
+          [
+            "DOC_MENTION",
+            "D0026"
+          ],
+          [
+            "DOC_MENTION",
+            "EV007"
+          ]
+        ]
+      },
+      {
+        "question": "What deals have we executed for Banyan Foods's JV partners and suppliers?",
+        "route": "SIMILAR_DEALS",
+        "gold": [
+          "D0011",
+          "D0012",
+          "D0013",
+          "D0021",
+          "D0022",
+          "D0024",
+          "D0025",
+          "D0026",
+          "D0078",
+          "D0113",
+          "D0114"
+        ],
+        "graph": [
+          "D0011",
+          "D0013",
+          "D0012",
+          "D0024",
+          "D0025",
+          "D0026",
+          "D0113",
+          "D0078"
+        ],
+        "baseline": [
+          "D0025",
+          "D0024",
+          "D0026"
+        ]
+      },
+      {
+        "question": "How are Cobalt Semicon and Riverside Polymers connected?",
+        "route": "CONNECTION",
+        "gold": [
+          [
+            "FORMER_EMPLOYEE",
+            "Leila Santos"
+          ]
+        ],
+        "graph": [
+          [
+            "FORMER_EMPLOYEE",
+            "Leila Santos"
+          ]
+        ],
+        "baseline": []
+      }
+    ]
+  }
+}

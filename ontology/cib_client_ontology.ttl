@@ -1,0 +1,187 @@
+@prefix cib: <https://example.org/cib-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/cib-ontology> a owl:Ontology ;
+    rdfs:label "CIB Frontline Client Intelligence Ontology (demo)" .
+
+cib:Organization a owl:Class ;
+    rdfs:comment "Any company or legal person." .
+cib:ClientGroup a owl:Class ;
+    rdfs:subClassOf cib:Organization ;
+    rdfs:comment "Ultimate-parent level client relationship (the unit bankers cover)." .
+cib:LegalEntity a owl:Class ;
+    rdfs:subClassOf cib:Organization ;
+    rdfs:comment "A booking legal entity that belongs to a ClientGroup." .
+cib:ExternalCompany a owl:Class ;
+    rdfs:subClassOf cib:Organization ;
+    rdfs:comment "A non-client organisation (prospect, supplier, target, PE sponsor)." .
+cib:Person a owl:Class ;
+    rdfs:comment "A natural person." .
+cib:Contact a owl:Class ;
+    rdfs:subClassOf cib:Person ;
+    rdfs:comment "A client-side person (CFO, Treasurer...)." .
+cib:Banker a owl:Class ;
+    rdfs:subClassOf cib:Person ;
+    rdfs:comment "An employee of the bank." .
+cib:Product a owl:Class ;
+    rdfs:comment "A bank product; family is GB, TB or Markets." .
+cib:Industry a owl:Class ;
+    rdfs:comment "Industry classification." .
+cib:Country a owl:Class ;
+    rdfs:comment "Jurisdiction." .
+cib:Currency a owl:Class ;
+    rdfs:comment "ISO currency." .
+cib:WalletEstimate a owl:Class ;
+    rdfs:comment "Estimated annual fee pool of a client for a product family." .
+cib:Opportunity a owl:Class ;
+    rdfs:comment "Pipeline opportunity (CRM)." .
+cib:Deal a owl:Class ;
+    rdfs:comment "Executed historical deal / mandate." .
+cib:CorporateEvent a owl:Class ;
+    rdfs:comment "Corporate event / news about a client." .
+cib:Document a owl:Class ;
+    rdfs:comment "Unstructured document." .
+cib:CallReport a owl:Class ;
+    rdfs:subClassOf cib:Document ;
+    rdfs:comment "Banker call report from a client meeting." .
+cib:CreditPaper a owl:Class ;
+    rdfs:subClassOf cib:Document ;
+    rdfs:comment "Annual credit review paper." .
+cib:Interaction a owl:Class ;
+    rdfs:comment "Banker-contact touchpoint (meeting, call, email)." .
+cib:Intent a owl:Class ;
+    rdfs:comment "Client intent extracted from text (e.g. 'expand_to_VN')." .
+
+cib:BELONGS_TO_GROUP a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:comment "Entity is part of group." .
+cib:SUBSIDIARY_OF a owl:TransitiveProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:comment "Direct ownership." .
+cib:INCORPORATED_IN a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Country ) ] ;
+    rdfs:comment "Jurisdiction." .
+cib:IN_INDUSTRY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:ClientGroup cib:ExternalCompany ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Industry ) ] ;
+    rdfs:comment "Industry." .
+cib:HAS_CURRENCY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Country ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Currency ) ] ;
+    rdfs:comment "Local currency." .
+cib:HOLDS a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Product ) ] ;
+    rdfs:comment "Product holding with the bank." .
+cib:PAYS a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Aggregated payment flow (12 months)." .
+cib:COVERS a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Banker ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:comment "Coverage assignment." .
+cib:WORKS_AT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Contact ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Current employer." .
+cib:PREVIOUSLY_WORKED_AT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Contact ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Former employer." .
+cib:DIRECTOR_OF a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Contact ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Board seat." .
+cib:JV_PARTNER_WITH a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Joint venture partnership." .
+cib:HAS_WALLET a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:range [ owl:unionOf ( cib:WalletEstimate ) ] ;
+    rdfs:comment "Wallet estimate." .
+cib:HAS_OPPORTUNITY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Opportunity ) ] ;
+    rdfs:comment "Pipeline item." .
+cib:FOR_PRODUCT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Opportunity cib:Deal ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Product ) ] ;
+    rdfs:comment "Product of opp / deal." .
+cib:OWNED_BY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Opportunity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Banker ) ] ;
+    rdfs:comment "Opportunity owner." .
+cib:EXECUTED_FOR a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Deal ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:comment "Deal client entity." .
+cib:DEAL_TEAM a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Deal ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Banker ) ] ;
+    rdfs:comment "Deal team member." .
+cib:DEAL_COUNTERPARTY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Deal ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Counterparty / target in the deal." .
+cib:ORIGINATED_FROM a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Deal cib:Opportunity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:CorporateEvent ) ] ;
+    rdfs:comment "Event lineage." .
+cib:AFFECTS a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:CorporateEvent ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup cib:LegalEntity ) ] ;
+    rdfs:comment "Event subject." .
+cib:INVOLVES a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:CorporateEvent ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:comment "Other party (target, buyer...)." .
+cib:IN_COUNTRY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:CorporateEvent ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Country ) ] ;
+    rdfs:comment "Event geography." .
+cib:ABOUT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Document cib:Interaction ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:comment "Document subject." .
+cib:AUTHORED_BY a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Document ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Banker ) ] ;
+    rdfs:comment "Author." .
+cib:ATTENDEE a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:CallReport ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Contact ) ] ;
+    rdfs:comment "Client attendee." .
+cib:MENTIONS a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Document ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Product cib:Country cib:Organization cib:Intent ) ] ;
+    rdfs:comment "Entity / intent mentioned in text (extracted)." .
+cib:WITH_CONTACT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Interaction ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Contact ) ] ;
+    rdfs:comment "Client side of touchpoint." .
+cib:BY_BANKER a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:Interaction ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Banker ) ] ;
+    rdfs:comment "Bank side of touchpoint." .
+cib:EXPRESSES a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:CallReport ) ] ;
+    rdfs:range [ owl:unionOf ( cib:Intent ) ] ;
+    rdfs:comment "Client intent captured in a meeting." .
+cib:SUPPLIER_OF a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity cib:ExternalCompany ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:comment "INFERRED: payee of supplier payments from a group entity." .
+cib:ULTIMATE_PARENT a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:range [ owl:unionOf ( cib:LegalEntity ) ] ;
+    rdfs:comment "INFERRED: transitive closure of SUBSIDIARY_OF." .
+cib:TRADES_WITH a owl:ObjectProperty ;
+    rdfs:domain [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:range [ owl:unionOf ( cib:ClientGroup ) ] ;
+    rdfs:comment "INFERRED: two client groups exchange payments." .

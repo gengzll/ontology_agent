@@ -1,0 +1,3 @@
+# Core demo is pure Python standard library (3.10+).
+# Optional: enables the Claude-powered agent mode (set ANTHROPIC_API_KEY).
+anthropic>=2.14

@@ -1,0 +1,140 @@
+entity_id,group_id,name,country,parent_entity_id,ownership_pct,entity_type,lei
+E0001,G001,Aurora Logistics Holdings Limited,SG,,100,Ultimate Parent,54933344138886496518
+E0002,G001,Aurora Logistics Asia Holdings (Hong Kong) Limited,HK,E0001,100,Regional Holdco,54934751250362651804
+E0003,G001,"Aurora Logistics (Shanghai) Co., Ltd",CN,E0002,100,Operating Company,54932904857232312579
+E0004,G001,"Aurora Logistics Vietnam Co., Ltd",VN,E0001,60,Operating Company,54938138473337191643
+E0005,G001,Aurora Logistics UK Limited,GB,E0001,75,Operating Company,54937958128857582994
+E0006,G001,"Aurora Logistics (Thailand) Co., Ltd",TH,E0001,100,Operating Company,54936451706797873814
+E0007,G001,Aurora Logistics Pty Ltd,AU,E0002,60,Operating Company,54935077589475633805
+E0008,G002,Banyan Foods (M) Sdn Bhd,MY,,100,Ultimate Parent,54931837967148159664
+E0009,G002,Banyan Foods Asia Holdings (Singapore) Pte Ltd,SG,E0008,100,Regional Holdco,54934940137856786813
+E0010,G002,Banyan Foods UK Limited,GB,E0008,51,Operating Company,54931361187857342062
+E0011,G002,Banyan Foods India Private Limited,IN,E0008,60,Operating Company,54935885564817511839
+E0012,G002,Banyan Foods Inc.,US,E0008,60,Operating Company,54934783368331919456
+E0013,G003,Cobalt Semicon Holdings Limited,SG,,100,Ultimate Parent,54937915849291095385
+E0014,G003,Cobalt Semicon Asia Holdings (Hong Kong) Limited,HK,E0013,100,Regional Holdco,54937296328764343781
+E0015,G003,Cobalt Semicon India Private Limited,IN,E0014,60,Operating Company,54937603275791610965
+E0016,G003,Cobalt Semicon UK Limited,GB,E0013,100,Operating Company,54933643721016225145
+E0017,G003,Cobalt Semicon KK,JP,E0014,100,Operating Company,54933997436958852057
+E0018,G003,Cobalt Semicon FZE,AE,E0013,51,Operating Company,54935592888787091669
+E0019,G003,"Cobalt Semicon (Thailand) Co., Ltd",TH,E0014,60,Operating Company,54937394265568770856
+E0020,G003,Cobalt Semicon Inc.,US,E0013,60,Operating Company,54932908031346760268
+E0021,G004,Dragonfly Renewables Holdings Limited,HK,,100,Ultimate Parent,54934111523383831225
+E0022,G004,Dragonfly Renewables Asia Holdings (Singapore) Pte Ltd,SG,E0021,100,Regional Holdco,54935994511003837095
+E0023,G004,Dragonfly Renewables FZE,AE,E0022,100,Operating Company,54934234563259502564
+E0024,G004,Dragonfly Renewables (M) Sdn Bhd,MY,E0021,75,Operating Company,54937871659047318988
+E0025,G004,"Dragonfly Renewables (Shanghai) Co., Ltd",CN,E0022,60,Operating Company,54934879534984807576
+E0026,G004,Dragonfly Renewables UK Limited,GB,E0021,100,Operating Company,54931916682262720899
+E0027,G005,Evergreen Textiles Holdings Limited,HK,,100,Ultimate Parent,54934579494503978868
+E0028,G005,Evergreen Textiles Asia Holdings (Singapore) Pte Ltd,SG,E0027,100,Regional Holdco,54939126618345613973
+E0029,G005,Evergreen Textiles KK,JP,E0028,100,Operating Company,54934565341596393950
+E0030,G005,Evergreen Textiles GmbH,DE,E0027,51,Operating Company,54939679167447772661
+E0031,G005,"Evergreen Textiles (Thailand) Co., Ltd",TH,E0028,75,Operating Company,54931825777130870508
+E0032,G006,Falcon Petrochem Holdings Limited,AE,,100,Ultimate Parent,54931929752913325687
+E0033,G006,Falcon Petrochem Asia Holdings (Singapore) Pte Ltd,SG,E0032,100,Regional Holdco,54938947146072751382
+E0034,G006,Falcon Petrochem Inc.,US,E0032,51,Operating Company,54936061266829756353
+E0035,G006,Falcon Petrochem (Hong Kong) Limited,HK,E0032,100,Operating Company,54938270624279912748
+E0036,G006,Falcon Petrochem Pty Ltd,AU,E0033,100,Operating Company,54936649029536491517
+E0037,G006,Falcon Petrochem KK,JP,E0032,51,Operating Company,54935637588785268735
+E0038,G006,Falcon Petrochem UK Limited,GB,E0032,100,Operating Company,54932416967826160932
+E0039,G007,Granite Infrastructure India Private Limited,IN,,100,Ultimate Parent,54935438419489310878
+E0040,G007,Granite Infrastructure Asia Holdings (Singapore) Pte Ltd,SG,E0039,100,Regional Holdco,54934971568868399034
+E0041,G007,"Granite Infrastructure (Thailand) Co., Ltd",TH,E0040,60,Operating Company,54935883286714232393
+E0042,G007,Granite Infrastructure (M) Sdn Bhd,MY,E0039,100,Operating Company,54935901425344629777
+E0043,G007,Granite Infrastructure (Hong Kong) Limited,HK,E0040,75,Operating Company,54934102241851544739
+E0044,G007,Granite Infrastructure KK,JP,E0039,100,Operating Company,54938162371865026042
+E0045,G007,Granite Infrastructure de Mexico SA de CV,MX,E0039,100,Operating Company,54937848461951722390
+E0046,G008,Harbourline Retail Holdings Limited,HK,,100,Ultimate Parent,54933270327664270049
+E0047,G008,Harbourline Retail Asia Holdings (Singapore) Pte Ltd,SG,E0046,100,Regional Holdco,54934181939821317282
+E0048,G008,Harbourline Retail UK Limited,GB,E0046,60,Operating Company,54939202453403662727
+E0049,G008,"Harbourline Retail Vietnam Co., Ltd",VN,E0046,100,Operating Company,54936416828755401568
+E0050,G008,Harbourline Retail India Private Limited,IN,E0047,100,Operating Company,54933707100706810206
+E0051,G008,"Harbourline Retail (Thailand) Co., Ltd",TH,E0046,60,Operating Company,54931229767460133729
+E0052,G008,Harbourline Retail KK,JP,E0047,75,Operating Company,54932452998725090639
+E0053,G008,Harbourline Retail de Mexico SA de CV,MX,E0046,51,Operating Company,54936818970969964677
+E0054,G009,Ironwood Pharma India Private Limited,IN,,100,Ultimate Parent,54938985454685234909
+E0055,G009,Ironwood Pharma Asia Holdings (Singapore) Pte Ltd,SG,E0054,100,Regional Holdco,54935948355762178321
+E0056,G009,Ironwood Pharma Pty Ltd,AU,E0055,100,Operating Company,54939769698522752156
+E0057,G009,"Ironwood Pharma (Shanghai) Co., Ltd",CN,E0054,100,Operating Company,54936801725818714169
+E0058,G009,PT Ironwood Pharma Indonesia,ID,E0055,100,Operating Company,54939133818943666692
+E0059,G009,Ironwood Pharma UK Limited,GB,E0054,75,Operating Company,54935178808666248882
+E0060,G009,"Ironwood Pharma Vietnam Co., Ltd",VN,E0055,100,Operating Company,54939440084013750699
+E0061,G009,Ironwood Pharma Inc.,US,E0054,60,Operating Company,54939072910166828374
+E0062,G010,Jadeport Maritime Holdings Limited,SG,,100,Ultimate Parent,54936465287239978299
+E0063,G010,Jadeport Maritime Asia Holdings (Hong Kong) Limited,HK,E0062,100,Regional Holdco,54936467433946397004
+E0064,G010,Jadeport Maritime (M) Sdn Bhd,MY,E0063,60,Operating Company,54933544905284582732
+E0065,G010,Jadeport Maritime de Mexico SA de CV,MX,E0062,75,Operating Company,54938701054290123218
+E0066,G010,"Jadeport Maritime Vietnam Co., Ltd",VN,E0063,100,Operating Company,54939152968082868956
+E0067,G010,PT Jadeport Maritime Indonesia,ID,E0062,100,Operating Company,54939480664517051324
+E0068,G011,"Kestrel Auto Components (Shanghai) Co., Ltd",CN,,100,Ultimate Parent,54937069154887953168
+E0069,G011,Kestrel Auto Components Asia Holdings (Singapore) Pte Ltd,SG,E0068,100,Regional Holdco,54938695062740506906
+E0070,G011,PT Kestrel Auto Components Indonesia,ID,E0069,75,Operating Company,54932512766216926866
+E0071,G011,Kestrel Auto Components (Hong Kong) Limited,HK,E0068,75,Operating Company,54931484271138706238
+E0072,G011,"Kestrel Auto Components (Thailand) Co., Ltd",TH,E0069,100,Operating Company,54934938788409813272
+E0073,G011,Kestrel Auto Components KK,JP,E0068,51,Operating Company,54937162161556951477
+E0074,G012,"Lotusbay Hospitality (Thailand) Co., Ltd",TH,,100,Ultimate Parent,54937395833333659317
+E0075,G012,Lotusbay Hospitality Asia Holdings (Singapore) Pte Ltd,SG,E0074,100,Regional Holdco,54937009320678454823
+E0076,G012,Lotusbay Hospitality Pty Ltd,AU,E0075,100,Operating Company,54937601713901802933
+E0077,G012,Lotusbay Hospitality India Private Limited,IN,E0074,51,Operating Company,54935165923483133445
+E0078,G012,Lotusbay Hospitality KK,JP,E0075,75,Operating Company,54932427996895184531
+E0079,G012,Lotusbay Hospitality Inc.,US,E0074,51,Operating Company,54932595823706804220
+E0080,G012,"Lotusbay Hospitality (Shanghai) Co., Ltd",CN,E0075,51,Operating Company,54938654250718543738
+E0081,G012,Lotusbay Hospitality UK Limited,GB,E0074,100,Operating Company,54936969832316440758
+E0082,G013,PT Meridale Telecom Indonesia,ID,,100,Ultimate Parent,54937180883797476810
+E0083,G013,Meridale Telecom Asia Holdings (Singapore) Pte Ltd,SG,E0082,100,Regional Holdco,54935112669786322548
+E0084,G013,Meridale Telecom (Hong Kong) Limited,HK,E0083,51,Operating Company,54931703389971834095
+E0085,G013,Meridale Telecom Pty Ltd,AU,E0082,100,Operating Company,54938985545000490929
+E0086,G013,Meridale Telecom Inc.,US,E0082,60,Operating Company,54939699227154011003
+E0087,G013,Meridale Telecom UK Limited,GB,E0082,75,Operating Company,54937655337875831062
+E0088,G014,Nimbusline Cloud Holdings Limited,SG,,100,Ultimate Parent,54936441786962845621
+E0089,G014,Nimbusline Cloud Asia Holdings (Hong Kong) Limited,HK,E0088,100,Regional Holdco,54938330719593661184
+E0090,G014,Nimbusline Cloud de Mexico SA de CV,MX,E0088,51,Operating Company,54936563660871369595
+E0091,G014,Nimbusline Cloud UK Limited,GB,E0088,51,Operating Company,54934173770178566657
+E0092,G014,Nimbusline Cloud Inc.,US,E0088,75,Operating Company,54932052155494542383
+E0093,G014,Nimbusline Cloud GmbH,DE,E0088,51,Operating Company,54932697185394594408
+E0094,G014,Nimbusline Cloud FZE,AE,E0089,100,Operating Company,54937295207884203447
+E0095,G014,Nimbusline Cloud Pty Ltd,AU,E0088,51,Operating Company,54931684469389354105
+E0096,G015,Orchidfield Agri Holdings Limited,SG,,100,Ultimate Parent,54931902869028824535
+E0097,G015,Orchidfield Agri Asia Holdings (Hong Kong) Limited,HK,E0096,100,Regional Holdco,54931351470623799430
+E0098,G015,"Orchidfield Agri (Shanghai) Co., Ltd",CN,E0097,100,Operating Company,54937598859617300879
+E0099,G015,Orchidfield Agri UK Limited,GB,E0096,60,Operating Company,54934808232671275666
+E0100,G015,Orchidfield Agri KK,JP,E0097,100,Operating Company,54939841247803509437
+E0101,G015,"Orchidfield Agri (Thailand) Co., Ltd",TH,E0096,51,Operating Company,54939533989187632995
+E0102,G015,"Orchidfield Agri Vietnam Co., Ltd",VN,E0097,51,Operating Company,54931291762679772748
+E0103,G016,Pinewood Steelworks India Private Limited,IN,,100,Ultimate Parent,54934636073471213073
+E0104,G016,Pinewood Steelworks (M) Sdn Bhd,MY,E0103,100,Operating Company,54938877940871445353
+E0105,G017,"Quartzline Electronics (Shanghai) Co., Ltd",CN,,100,Ultimate Parent,54933581387458796453
+E0106,G017,Quartzline Electronics FZE,AE,E0105,100,Operating Company,54932076484656637957
+E0107,G017,Quartzline Electronics (M) Sdn Bhd,MY,E0105,100,Operating Company,54934459853378684953
+E0108,G018,Redcliff Packaging (M) Sdn Bhd,MY,,100,Ultimate Parent,54932676592146812685
+E0109,G018,Redcliff Packaging UK Limited,GB,E0108,100,Operating Company,54936726317583461700
+E0110,G019,Saffronleaf Brands India Private Limited,IN,,100,Ultimate Parent,54938641954534079325
+E0111,G019,Saffronleaf Brands FZE,AE,E0110,100,Operating Company,54938397484486295425
+E0112,G019,"Saffronleaf Brands (Shanghai) Co., Ltd",CN,E0110,100,Operating Company,54936618585392130397
+E0113,G020,Tidewell Shipping Holdings Limited,HK,,100,Ultimate Parent,54939269491711922458
+E0114,G020,"Tidewell Shipping (Shanghai) Co., Ltd",CN,E0113,100,Operating Company,54935674412522461417
+E0115,G021,Umberstone Mining Pty Ltd,AU,,100,Ultimate Parent,54938296439576557114
+E0116,G021,Umberstone Mining FZE,AE,E0115,100,Operating Company,54937258186388417043
+E0117,G022,Vantagepoint Healthcare Holdings Limited,SG,,100,Ultimate Parent,54933531859024959318
+E0118,G022,Vantagepoint Healthcare Pty Ltd,AU,E0117,100,Operating Company,54937601184179404092
+E0119,G022,Vantagepoint Healthcare (M) Sdn Bhd,MY,E0117,100,Operating Company,54939518219310922708
+E0120,G023,Willowmere Education Holdings Limited,GB,,100,Ultimate Parent,54935437157154400003
+E0121,G023,Willowmere Education (M) Sdn Bhd,MY,E0120,100,Operating Company,54934968415390676228
+E0122,G023,"Willowmere Education (Shanghai) Co., Ltd",CN,E0120,100,Operating Company,54931253598945859078
+E0123,G024,"Xenara Battery Tech (Shanghai) Co., Ltd",CN,,100,Ultimate Parent,54934764170200993161
+E0124,G024,Xenara Battery Tech UK Limited,GB,E0123,100,Operating Company,54936720707699721990
+E0125,G025,Yarrowfield Chemicals GmbH,DE,,100,Ultimate Parent,54937551786688155193
+E0126,G025,Yarrowfield Chemicals UK Limited,GB,E0125,100,Operating Company,54936321930665946521
+E0127,G026,Zephyrine Airways Holdings Limited,HK,,100,Ultimate Parent,54935475504306936245
+E0128,G026,Zephyrine Airways India Private Limited,IN,E0127,100,Operating Company,54934323277942808761
+E0129,G027,"Atlasrock Cement Vietnam Co., Ltd",VN,,100,Ultimate Parent,54933988401908523018
+E0130,G027,Atlasrock Cement (M) Sdn Bhd,MY,E0129,100,Operating Company,54936697964036913112
+E0131,G027,Atlasrock Cement Inc.,US,E0129,100,Operating Company,54935250775641511072
+E0132,G028,Beaconhill Insurance Services Holdings Limited,GB,,100,Ultimate Parent,54933368409722233306
+E0133,G028,"Beaconhill Insurance Services Vietnam Co., Ltd",VN,E0132,100,Operating Company,54937253996718819892
+E0134,G028,Beaconhill Insurance Services (Singapore) Pte Ltd,SG,E0132,100,Operating Company,54931957298921808092
+E0135,G029,Cedarvale Properties Holdings Limited,SG,,100,Ultimate Parent,54935520825957646672
+E0136,G029,Cedarvale Properties UK Limited,GB,E0135,100,Operating Company,54938347479339607053
+E0137,G029,Cedarvale Properties de Mexico SA de CV,MX,E0135,100,Operating Company,54933872773812840365
+E0138,G030,Deltawave Apparel Sourcing Holdings Limited,HK,,100,Ultimate Parent,54933208011635497709
+E0139,G030,Deltawave Apparel Sourcing (Singapore) Pte Ltd,SG,E0138,100,Operating Company,54937324288944747857
