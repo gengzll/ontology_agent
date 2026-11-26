@@ -295,7 +295,14 @@ async function loadExperiments() {
 async function init() {
   META = await (await fetch("/api/meta")).json();
   $("#asof").textContent = META.as_of;
-  $("#mode").textContent = META.llm_available ? `Claude · ${META.model}` : "Offline planner (no API key)";
+  $("#mode").textContent = META.static ? "Static snapshot · precomputed answers" :
+    META.llm_available ? `Claude · ${META.model}` : "Offline planner (no API key)";
+  if (META.questions) {
+    const dl = document.createElement("datalist"); dl.id = "qlist";
+    dl.innerHTML = META.questions.map(q => `<option value="${esc(q)}">`).join("");
+    document.body.append(dl); $("#q").setAttribute("list", "qlist");
+    $("#q").placeholder = `Type to pick from ${META.questions.length} precomputed questions (static snapshot)…`;
+  }
   $("#mode").className = "badge " + (META.llm_available ? "ok" : "off");
   $("#banker").innerHTML = META.bankers.map(b => `<option value="${b.id}">${esc(b.name)} – ${esc(b.role)}</option>`).join("");
   $("#eclient").innerHTML = META.clients.map(c => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
